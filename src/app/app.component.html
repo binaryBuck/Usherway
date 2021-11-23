@@ -1,0 +1,51 @@
+<!-- This file modifies the look of the ionic app -->
+<ion-app>
+    <ion-menu type="overlay" *ngIf="isLoggedIn" contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slow="start" [name]="p.icon" color='secondary'></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <h3>Google Calendar + Firebase</h3>
+    <p>Welcome to AngularFirebase world </p>
+
+    <div *ngIf="auth.user$ | async as user">
+        <h3>Logged in as {{ user.displayName }}</h3>
+        <img src="{{ user.photoURL }}" width="50px">
+    </div>
+
+
+    <button (click)="auth.login()" class="button is-danger">Login with Google</button>
+    <button (click)="auth.logout()" class="button">Logout</button>
+
+    <hr>
+
+    <div *ngIf="auth.user$ | async">
+        <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
+        <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button>
+
+        <div *ngFor="let item of auth.calendarItems">
+            <h3>{{ item.summary }} - {{ item.status }}</h3>
+            <p><em>Created {{ item.created }}</em></p>
+            <p>{{ item.description }}</p>
+            <hr>
+        </div>
+    </div>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

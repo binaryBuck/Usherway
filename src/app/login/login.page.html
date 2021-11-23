@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title><p style="color:white">Login</p></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid Fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">
+              <ion-icon name="key-outline" color="primary"></ion-icon>
+              Login
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup] ="loginForm" autocomplete = "off">
+              
+              <ion-button color="secondary" expand="block" class="ion-margin-top" (click) = "googleLoginWeb()">Google
+                <ion-icon name="logo-google"></ion-icon>
+              </ion-button>
+
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
