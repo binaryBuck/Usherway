@@ -13,7 +13,7 @@ const hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOStri
   providedIn: 'root'
 })
 export class FirebaseAuthService {
-
+  
   user$: Observable<firebase.User>;
   calendarItems: any[];
 
@@ -23,6 +23,7 @@ export class FirebaseAuthService {
   }
 
   initClient() {
+    console.log('1');
     gapi.load('client', () => {
       console.log('loaded client')
 
@@ -46,10 +47,12 @@ export class FirebaseAuthService {
   }
 
   getAuthState() {
+    console.log('authstate initialized');
     return this.angularFireAuth.authState;
   }
 
   async googleLoginWeb() {
+    console.log('google login initialized');
     const googleAuth = gapi.auth2.getAuthInstance();
     const googleUser = await googleAuth.signIn();
     const token = googleUser.getAuthResponse().id_token;
@@ -67,6 +70,7 @@ export class FirebaseAuthService {
   }
 
   async getCalendar() {
+    console.log('getting calendar');
     const events = await gapi.client.calendar.events.list({
       calendarId: 'primary',
       timeMin: new Date().toISOString(),
@@ -82,6 +86,7 @@ export class FirebaseAuthService {
   }
 
   async insertEvent() {
+    console.log('inserting event to calendar');
     const insert = await gapi.client.calendar.events.insert({
       calendarId: 'primary',
       start: {
