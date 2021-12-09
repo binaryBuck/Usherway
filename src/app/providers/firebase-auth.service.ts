@@ -1,5 +1,5 @@
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { Injectable, Optional, NgZone } from '@angular/core';
+import { Injectable, Optional, Component, NgZone } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import { Observable } from 'rxjs';
