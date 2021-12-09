@@ -5,6 +5,10 @@
         <ion-toolbar>
           <ion-title>Menu</ion-title>
         </ion-toolbar>
+
+        <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+        <script src="https://apis.google.com/js/platform"></script>
+        <script src="https://apis.google.com/js/platform.js?onload=init"></script>
       </ion-header>
 
       <ion-content>
@@ -36,8 +40,8 @@
     <hr>
 
     <div *ngIf="auth.user$ | async">
-        <button (click)="auth.getCalendar()" class="button is-success">Get Google Calendar</button>
-        <button (click)="auth.insertEvent()" class="button is-warning">Add Event</button>
+        <button (click)="auth.getCalendar()">Get Google Calendar</button>
+        <button (click)="auth.insertEvent()">Add Event</button>
 
         <div *ngFor="let item of auth.calendarItems">
             <h3>{{ item.summary }} - {{ item.status }}</h3>
