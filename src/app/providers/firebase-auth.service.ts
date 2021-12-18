@@ -54,39 +54,17 @@ export class FirebaseAuthService {
     };
 
     return new Promise((resolve, reject) => {
+      console.log('hm');
       gapi.client.init(initObj).then(resolve, reject);
+      console.log("somethings fishy here");
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
     });
-  }
-
-  // Trying sumn else pt 2
-  ngOnInit(): void {
-    gapi.load('client').then(
-        result => {
-            gapi.apiLoaded = true;
-            return gapi.initClient()
-        },
-        err => {
-            gapi.apiFailed = true;
-        }
-    ).then(result => {
-        gapi.apiReady = true;
-    }, err => {
-        gapi.apiFailed = true;
-    });
-  }
-    
-  async logout() {
-    try {
-      await this.angularFireAuth.signOut();
-    } catch(error) {
-      throw new Error(error);
-    }
   }
 
   getAuthState() {
     console.log('authstate initialized');
     return this.angularFireAuth.authState;
+    //passing
   }
 
   async googleLoginWeb() {
@@ -106,6 +84,33 @@ export class FirebaseAuthService {
       throw new Error(error);
     }
   }
+
+  // Trying sumn else pt 2
+  ngOnInit(): void {
+    gapi.load('client').then(
+        result => {
+            gapi.apiLoaded = true;
+            return gapi.initClient();
+        },
+        err => {
+            gapi.apiFailed = true;
+        }
+    ).then(result => {
+        gapi.apiReady = true;
+    }, err => {
+        gapi.apiFailed = true;
+    });
+  }
+    
+  async logout() {
+    try {
+      await this.angularFireAuth.signOut();
+    } catch(error) {
+      throw new Error(error);
+    }
+  }
+
+  
 
   async getCalendar() {
     console.log('getting calendar');
