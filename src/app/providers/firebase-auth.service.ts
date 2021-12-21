@@ -23,43 +23,43 @@ export class FirebaseAuthService {
     this.user$ = angularFireAuth.authState;
   }
 
-  // // Initialize the Google API client with desired scopes, OG
-  // initClient() {
-  //   console.log('1');
-  //   gapi.load('client', () => {
-  //     console.log('loaded client')
+  // Initialize the Google API client with desired scopes, OG
+  initClient() {
+    console.log('1');
+    gapi.load('client', () => {
+      console.log('loaded client')
 
-  //     gapi.client.init({
-  //       apiKey: 'AIzaSyCqiI_9U5YPanFH7DO3YCdGZiSzWn3PSyM',
-  //       clientId: '949573618545-n8olkm2f7poe22s8s8818slptbfb1l7a.apps.googleusercontent.com',
-  //       discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-  //       scope: 'https://www.googleapis.com/auth/calendar'
-  //     })
+      gapi.client.init({
+        apiKey: 'AIzaSyCqiI_9U5YPanFH7DO3YCdGZiSzWn3PSyM',
+        clientId: '949573618545-n8olkm2f7poe22s8s8818slptbfb1l7a.apps.googleusercontent.com',
+        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+        scope: 'https://www.googleapis.com/auth/calendar'
+      })
 
-  //     gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
-  //   });
-  // }
-
-  // Trying sumn else, https://stackoverflow.com/questions/38091215/import-gapi-auth2-in-angular-2-typescript
-  initClient(): Promise<gapi.auth2.GoogleAuth> {
-    var API_KEY = 'AIzaSyCqiI_9U5YPanFH7DO3YCdGZiSzWn3PSyM'
-    var DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'
-    var clientId = '949573618545-n8olkm2f7poe22s8s8818slptbfb1l7a.apps.googleusercontent.com'
-    var scope = 'https://www.googleapis.com/auth/calendar'
-    var initObj = {
-        'apiKey': API_KEY,
-        'clientId': clientId,
-        'discoveryDocs': [DISCOVERY_DOC],
-        'scope': scope
-    };
-
-    return new Promise((resolve, reject) => {
-      console.log('hm');
-      gapi.client.init(initObj).then(resolve, reject);
-      console.log("somethings fishy here");
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
     });
   }
+
+  // // Trying sumn else, https://stackoverflow.com/questions/38091215/import-gapi-auth2-in-angular-2-typescript
+  // initClient(): Promise<gapi.auth2.GoogleAuth> {
+  //   var API_KEY = 'AIzaSyCqiI_9U5YPanFH7DO3YCdGZiSzWn3PSyM'
+  //   var DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'
+  //   var clientId = '949573618545-n8olkm2f7poe22s8s8818slptbfb1l7a.apps.googleusercontent.com'
+  //   var scope = 'https://www.googleapis.com/auth/calendar'
+  //   var initObj = {
+  //       'apiKey': API_KEY,
+  //       'clientId': clientId,
+  //       'discoveryDocs': [DISCOVERY_DOC],
+  //       'scope': scope
+  //   };
+
+  //   return new Promise((resolve, reject) => {
+  //     console.log('hm');
+  //     gapi.client.init(initObj).then(resolve, reject);
+  //     console.log("somethings fishy here");
+  //     gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
+  //   });
+  // }
 
   getAuthState() {
     console.log('authstate initialized');
