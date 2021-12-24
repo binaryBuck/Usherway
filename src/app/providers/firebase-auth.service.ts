@@ -41,6 +41,7 @@ export class FirebaseAuthService {
 
       gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
     });
+    this.getCalendar();
   }
 
   // // Trying sumn else, https://stackoverflow.com/questions/38091215/import-gapi-auth2-in-angular-2-typescript
@@ -81,7 +82,7 @@ export class FirebaseAuthService {
     const credential = GoogleAuthProvider.credential(token);
     try{
       await this.angularFireAuth.signInAndRetrieveDataWithCredential(credential);
-      console.log('calendar api data retrieved')
+      console.log('credentials and data retrieved')
     } catch (error) {
       console.log("error", error);
       throw new Error(error);
