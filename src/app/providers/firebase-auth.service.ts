@@ -6,9 +6,12 @@ import { Observable } from 'rxjs';
 import auth from 'firebase/compat/app';
 import { GoogleAuthProvider } from "firebase/auth";
 import { FirebaseApp } from '@angular/fire/compat';
+import {google} from 'googleapis';
+
 
 declare var gapi: any;
 const hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
+const calendar = google.calendar('v3');
 
 @Injectable({
   providedIn: 'root'
